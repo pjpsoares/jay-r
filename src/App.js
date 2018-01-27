@@ -7,10 +7,11 @@ import {
   Route
 } from 'react-router-dom'
 
-import { Header, H1 } from './shared';
+import { Header, H1, Main } from './shared';
 
 const AppContainer = styled.div`
   text-align: center;
+  height: 100%;
 `
 
 class App extends Component {
@@ -21,10 +22,10 @@ class App extends Component {
           <Header>
             <H1>jayway robot coding challenge</H1>
           </Header>
-          <main>
+          <Main>
             <Route exact path="/" component={BoardCreationForm} />
             <Route path="/simulation" component={Simulator} />
-          </main>
+          </Main>
         </AppContainer>
       </Router>
     );

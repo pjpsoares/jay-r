@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import { Input, Button, ActionsBar } from '../shared';
+import styled from 'styled-components';
 
 const MAX_WIDTH = 20;
 const MAX_HEIGHT = 20;
+
+const InputContainer = styled.div`
+  margin-bottom: 40px;
+`
 
 export default class BoardCreationForm extends Component {
 
@@ -91,13 +96,15 @@ export default class BoardCreationForm extends Component {
   render() {
     return (
       <form onSubmit={this.submitBoard}>
-        <h2>Configure the board</h2>
-        <Input className={this.isValidWidth() ? '' : 'invalid'} onChange={this.onWidthChange} type="number" placeholder={`Width (max:${MAX_WIDTH})`} />
-        <Input className={this.isValidHeight() ? '' : 'invalid'} onChange={this.onHeightChange} type="number" placeholder={`Height (max:${MAX_HEIGHT})`} />
-        <h2>Configure the initial position</h2>
-        <Input className={this.isValidStartX() ? '' : 'invalid'} onChange={this.onRobotStartPositionXChange} type="number" placeholder="X" />
-        <Input className={this.isValidStartY() ? '' : 'invalid'} onChange={this.onRobotStartPositionYChange} type="number" placeholder="Y" />
-        <Input className={this.isValidStartDirection() ? '' : 'invalid'} onChange={this.onRobotStartDirectionChange} type="text" placeholder="Direction (N,E,S,W)" />
+        <InputContainer>
+          <h2>Configure the board</h2>
+          <Input className={this.isValidWidth() ? '' : 'invalid'} onChange={this.onWidthChange} type="number" placeholder={`Width (max:${MAX_WIDTH})`} />
+          <Input className={this.isValidHeight() ? '' : 'invalid'} onChange={this.onHeightChange} type="number" placeholder={`Height (max:${MAX_HEIGHT})`} />
+          <h2>Configure the initial position</h2>
+          <Input className={this.isValidStartX() ? '' : 'invalid'} onChange={this.onRobotStartPositionXChange} type="number" placeholder="X" />
+          <Input className={this.isValidStartY() ? '' : 'invalid'} onChange={this.onRobotStartPositionYChange} type="number" placeholder="Y" />
+          <Input className={this.isValidStartDirection() ? '' : 'invalid'} onChange={this.onRobotStartDirectionChange} type="text" placeholder="Direction (N,E,S,W)" />
+        </InputContainer>
         <ActionsBar>
           <Button disabled={!this.isValidForm()} type="submit">Submit</Button>
         </ActionsBar>
