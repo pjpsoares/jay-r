@@ -28,13 +28,13 @@ export default class Simulator extends Component {
 
     this.state = {
       initialPosition: {
-        x: parseInt(params.get('x', 10)),
-        y: parseInt(params.get('y', 10)),
-        direction: params.get('d', 10)
+        x: parseInt(params.get('x'), 10),
+        y: parseInt(params.get('y'), 10),
+        direction: params.get('d')
       },
       board: {
-        width: parseInt(params.get('w', 10)),
-        height: parseInt(params.get('h', 10))
+        width: parseInt(params.get('w'), 10),
+        height: parseInt(params.get('h'), 10)
       },
       instructions: '',
       positions: []
