@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import BoardCreationForm from './board/board-creation-form';
+import styled from 'styled-components';
+
+import { Header, H1 } from './shared';
+
+const AppContainer = styled.div`
+  text-align: center;
+`
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <AppContainer>
+        <Header>
+          <H1>jayway robot coding challenge</H1>
+        </Header>
+        <main>
+          <BoardCreationForm />
+        </main>
+      </AppContainer>
     );
   }
 }
