@@ -28,9 +28,13 @@ export default class Simulator extends Component {
 
     this.state = {
       initialPosition: {
-        x: params.get('x'),
-        y: params.get('y'),
-        direction: params.get('d')
+        x: parseInt(params.get('x', 10)),
+        y: parseInt(params.get('y', 10)),
+        direction: params.get('d', 10)
+      },
+      board: {
+        width: parseInt(params.get('w', 10)),
+        height: parseInt(params.get('h', 10))
       },
       instructions: '',
       positions: []
@@ -44,7 +48,9 @@ export default class Simulator extends Component {
 
     this.setState({
       instructions: event.target.value,
-      positions: robotService.multipleIterationOfState(this.state.initialPosition, instructionsArray)
+      positions: robotService.multipleIterationOfState(
+        this.state.board, this.state.initialPosition, instructionsArray
+      )
     });
   }
 

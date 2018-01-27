@@ -100,6 +100,7 @@ class RobotService {
           ...actualPosition,
           x: actualPosition.x === board.width - 1 ? actualPosition.x : actualPosition.x + 1
         };
+      default: throw new Error('Invalid direction.');
     }
   }
 }

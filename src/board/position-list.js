@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import {
-  ActionsBar,
-  Button,
-  Input
-} from '../shared';
-
 const Container = styled.div`
   height: 100%;
   width: 100%;
