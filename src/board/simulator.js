@@ -29,7 +29,7 @@ export default class Simulator extends Component {
           <Input type="text" placeholder="instructions" />
         </ActionsBar>
         <BoardContainer>
-          som
+          Some
         </BoardContainer>
         <ActionsBar>
           <Link to="/">
