@@ -4,7 +4,7 @@ import { Input, Button, ActionsBar } from '../shared';
 const MAX_WIDTH = 20;
 const MAX_HEIGHT = 20;
 
-class BoardCreationForm extends Component {
+export default class BoardCreationForm extends Component {
 
   constructor(props) {
     super(props);
@@ -14,6 +14,7 @@ class BoardCreationForm extends Component {
     this.onRobotStartPositionXChange = this.onRobotStartPositionXChange.bind(this);
     this.onRobotStartPositionYChange = this.onRobotStartPositionYChange.bind(this);
     this.onRobotStartDirectionChange = this.onRobotStartDirectionChange.bind(this);
+    this.submitBoard = this.submitBoard.bind(this);
 
     this.state = {
       width: undefined,
@@ -25,19 +26,19 @@ class BoardCreationForm extends Component {
   }
 
   onWidthChange(event) {
-    this.setState({ width: event.target.value });
+    this.setState({ width: parseInt(event.target.value, 10) });
   }
 
   onHeightChange(event) {
-    this.setState({ height: event.target.value });
+    this.setState({ height: parseInt(event.target.value, 10) });
   }
 
   onRobotStartPositionXChange(event) {
-    this.setState({ startX: event.target.value });
+    this.setState({ startX: parseInt(event.target.value, 10) });
   }
 
   onRobotStartPositionYChange(event) {
-    this.setState({ startY: event.target.value });
+    this.setState({ startY: parseInt(event.target.value, 10) });
   }
 
   onRobotStartDirectionChange(event) {
@@ -72,9 +73,24 @@ class BoardCreationForm extends Component {
     return ['N', 'E', 'S', 'W'].indexOf(this.state.startDirection) > -1;
   }
 
+  submitBoard() {
+    // Sanity check
+    if (!this.isValidForm()) {
+      return;
+    }
+
+    this.props.history.push(
+      `/simulation?w=${this.state.width}` +
+      `&h=${this.state.height}` +
+      `&x=${this.state.startX}` +
+      `&y=${this.state.startY}` +
+      `&d=${this.state.startDirection}`
+    );
+  }
+
   render() {
     return (
-      <form>
+      <form onSubmit={this.submitBoard}>
         <h2>Configure the board</h2>
         <Input className={this.isValidWidth() ? '' : 'invalid'} onChange={this.onWidthChange} type="number" placeholder={`Width (max:${MAX_WIDTH})`} />
         <Input className={this.isValidHeight() ? '' : 'invalid'} onChange={this.onHeightChange} type="number" placeholder={`Height (max:${MAX_HEIGHT})`} />
@@ -89,5 +105,3 @@ class BoardCreationForm extends Component {
     );
   }
 }
-
-export default BoardCreationForm;
